@@ -17,7 +17,7 @@ public class ToDoList {
     }
 
     /**
-     * TAdds a new task to the list based on the description.
+     * Adds a new task to the list based on the description.
      * @param description The text describing the new task.
      */
     public void addTask(String description){
@@ -60,12 +60,10 @@ public class ToDoList {
      * Prints all of the incomplete tasks into the console.
      */
     public void listIncompleteTasks(){
-        ArrayList <Task> incompleteTasks = new ArrayList<Task>();
         for(Task currentTask : tasks){
             if (!currentTask.isCompleted()){
-                incompleteTasks.add(currentTask);
+                System.out.println(currentTask);
             }
         }
-        System.out.println(incompleteTasks);
     }
 }
