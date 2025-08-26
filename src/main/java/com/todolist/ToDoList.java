@@ -21,7 +21,8 @@ public class ToDoList {
      * @param description The text describing the new task.
      */
     public void addTask(String description){
-
+        Task newTask = new Task(description);
+        tasks.add(newTask);
     }
 
     /**
@@ -29,29 +30,42 @@ public class ToDoList {
      * @param index The index number where the task is stored. 
      */
     public void markTaskAsComplete(int index){
-
+        if(index >= 0 && index < tasks.size()){
+            Task task =tasks.get(index);
+            task.taskCompleted();
+        }
     }
 
     /*
      * Prints all of the tasks in the lists into the console.
      * Also shows the completion status and description of said task.
      */
-    public void allTasks(){
-
+    public void listAllTasks(){
+        for (int i=0; i < tasks.size(); i++){
+            System.out.println(tasks.get(i));
+        }
     }
 
-    /**
-     * Removes the task from the list using index.
-     * @param index The index number of where the task is stored.
-     */
-    public void removeTask(int index){
-
-    }
+        /**
+         * Removes the task from the list using index.
+         * @param index The index number of where the task is stored.
+         */
+        public void removeTask(int index){
+            if(index >= 0 && index < tasks.size()){
+                tasks.remove(index);
+            }
+        }
 
     /**
      * Prints all of the incomplete tasks into the console.
      */
-    public void getIncompleteTasks(){
-
+    public void listIncompleteTasks(){
+        ArrayList <Task> incompleteTasks = new ArrayList<Task>();
+        for(Task currentTask : tasks){
+            if (!currentTask.isCompleted()){
+                incompleteTasks.add(currentTask);
+            }
+        }
+        System.out.println(incompleteTasks);
     }
 }
